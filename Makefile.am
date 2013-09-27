@@ -70,4 +70,4 @@ run: all
 # make debug: run the game in gdb without installing it.
 #             requires gdb to be in your $PATH.
 debug: all
-	WARMUX_DATADIR=@srcdir@/data/ WARMUX_FONT_PATH=@srcdir@/data/font/Ubuntu-R.ttf gdb @srcdir@/src/warmux
+	WARMUX_DATADIR=@srcdir@/data/ WARMUX_FONT_PATH=@srcdir@/data/font/Ubuntu-R.ttf cgdb @srcdir@/src/warmux
