@@ -1,0 +1,14 @@
+*.o
+*.gmo
+*.po
+Makefile
+*.a
+config.log
+config.status
+.deps/*
+.deps/
+stamp-h1
+config_autotools.h
+warmux-list-games
+warmux
+autom4te.cache
