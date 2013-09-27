@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <getopt.h>
 #include <WARMUX_types.h>
 #include <WARMUX_network.h>
 #include <WARMUX_index_server.h>

@@ -85,7 +85,8 @@ Action::Action(const char *buffer, DistantComputer* _creator)
 {
   m_creator = _creator;
 
-  m_header.len = SDLNet_Read32(buffer);
+  // XXX: unsafe cast repaired dirty
+  m_header.len = SDLNet_Read32((Uint32*)buffer);
   ASSERT(m_header.len >= sizeof(Header));
   buffer += 4;
   // All of the following could be skipped for the actions we now,
