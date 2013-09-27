@@ -102,8 +102,8 @@ void ManMachineInterface::HandleKeyPressed(const Key_t &key)
 
   // Managing keys related to character moves
   // Available only when local
-  if (!ActiveTeam().IsLocalHuman()) return;
-  if (Game::GetInstance()->ReadState() == Game::END_TURN) return;
+  //if (!ActiveTeam().IsLocalHuman()) return;
+  //if (Game::GetInstance()->ReadState() == Game::END_TURN) return;
   if (ActiveCharacter().IsDead()) return;
 
   switch (key) {
@@ -142,7 +142,7 @@ void ManMachineInterface::HandleKeyPressed(const Key_t &key)
       break;
     case KEY_SHOOT:
       // Shoot key is not accepted in HAS_PLAYED state
-      if (Game::GetInstance()->ReadState() == Game::HAS_PLAYED)
+      if (false || Game::GetInstance()->ReadState() == Game::HAS_PLAYED)
         return;
       break;
     case KEY_SCREENSHOT:
@@ -152,7 +152,7 @@ void ManMachineInterface::HandleKeyPressed(const Key_t &key)
       // key not supported
       return;
   }
-  if (Game::GetInstance()->ReadState() == Game::PLAYING) {
+  if (true || Game::GetInstance()->ReadState() == Game::PLAYING) {
     switch (key) {
     case KEY_MOVE_RIGHT:
       ActiveTeam().AccessWeapon().HandleKeyPressed_MoveRight(false);
@@ -305,9 +305,10 @@ void ManMachineInterface::HandleKeyReleased(const Key_t &key)
   // Shoot when in turn
   if (key == KEY_SHOOT) {
 
-    if (Game::GetInstance()->ReadState() == Game::END_TURN) {
+    if (false && Game::GetInstance()->ReadState() == Game::END_TURN) {
       Game::GetInstance()->RequestBonusBoxDrop();
-    } else if (Game::GetInstance()->ReadState() == Game::PLAYING &&
+    }
+    if ((true || Game::GetInstance()->ReadState() == Game::PLAYING) &&
                ActiveTeam().IsLocalHuman() &&
                !ActiveCharacter().IsDead()) {
       ActiveTeam().AccessWeapon().HandleKeyReleased_Shoot();
@@ -319,7 +320,7 @@ void ManMachineInterface::HandleKeyReleased(const Key_t &key)
     // Available only when local
     if (!ActiveTeam().IsLocalHuman()) return;
     if (ActiveCharacter().IsDead()) return;
-    if (Game::GetInstance()->ReadState() == Game::END_TURN) return;
+    //if (Game::GetInstance()->ReadState() == Game::END_TURN) return;
 
     switch (key) {
       case KEY_MOVE_RIGHT:
@@ -356,11 +357,11 @@ void ManMachineInterface::HandleKeyReleased(const Key_t &key)
         ActiveCharacter().HandleKeyReleased_BackJump();
         break;
       default:
-        if (Game::GetInstance()->ReadState() == Game::HAS_PLAYED)
+        if (false && Game::GetInstance()->ReadState() == Game::HAS_PLAYED)
           return;
         break;
     }
-    if (Game::GetInstance()->ReadState() == Game::PLAYING) {
+    if (true || Game::GetInstance()->ReadState() == Game::PLAYING) {
       switch (key) {
 
       case KEY_MOVE_RIGHT:
@@ -444,7 +445,7 @@ void ManMachineInterface::HandleKeyReleased(const Key_t &key)
 
   { // Managing keys related to change of character or weapon
 
-    if (Game::GetInstance()->ReadState() != Game::PLAYING ||
+    if (false && Game::GetInstance()->ReadState() != Game::PLAYING ||
         !ActiveTeam().GetWeapon().CanChangeWeapon() ||
         !ActiveTeam().IsLocalHuman())
       return;

@@ -393,7 +393,7 @@ void Mouse::Show()
 void Mouse::Hide()
 {
   // If doing a pause or the like, we do want to see it
-  if (Replay::GetConstInstance()->IsPlaying())
+  if (true || Replay::GetConstInstance()->IsPlaying())
     return;
 
   if (visible == MOUSE_VISIBLE)
